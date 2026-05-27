@@ -1,0 +1,17 @@
+{
+  "accept": {
+    "min_score": 4.3
+  },
+
+  "minor_revision": {
+    "min_score": 3.5
+  },
+
+  "major_revision": {
+    "min_score": 2.5
+  },
+
+  "reject": {
+    "max_score": 2.4
+  }
+}

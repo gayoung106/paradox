@@ -1,0 +1,13 @@
+{
+  "priority_order": [
+    "introduction",
+    "theory",
+    "methods",
+    "results",
+    "discussion",
+    "conclusion",
+    "abstract"
+  ],
+
+  "must_approve_before_next": true
+}

@@ -1,0 +1,38 @@
+{
+  "default_language": "korean",
+
+  "target_journals": [
+
+    {
+      "name": "행정논총",
+      "type": "KCI",
+      "style": "public administration",
+      "emphasis": [
+        "policy implication",
+        "organizational theory",
+        "public sector relevance"
+      ]
+    },
+
+    {
+      "name": "한국행정학보",
+      "type": "KCI",
+      "style": "formal academic",
+      "emphasis": [
+        "theoretical rigor",
+        "methodological rigor"
+      ]
+    },
+
+    {
+      "name": "Public Administration Review",
+      "type": "SSCI",
+      "style": "international",
+      "emphasis": [
+        "contribution",
+        "generalizability",
+        "international implication"
+      ]
+    }
+  ]
+}

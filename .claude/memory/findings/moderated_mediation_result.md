@@ -10,7 +10,7 @@ Dep. Variable:                   oi_c   R-squared:                       0.197
 Model:                            OLS   Adj. R-squared:                  0.197
 Method:                 Least Squares   F-statistic:                     393.4
 Date:                Wed, 27 May 2026   Prob (F-statistic):           4.00e-80
-Time:                        13:34:42   Log-Likelihood:                -2138.5
+Time:                        09:06:18   Log-Likelihood:                -2138.5
 No. Observations:                2020   AIC:                             4281.
 Df Residuals:                    2018   BIC:                             4292.
 Df Model:                           1                                         
@@ -41,7 +41,7 @@ Dep. Variable:                    upb   R-squared:                       0.063
 Model:                            OLS   Adj. R-squared:                  0.062
 Method:                 Least Squares   F-statistic:                     34.16
 Date:                Wed, 27 May 2026   Prob (F-statistic):           1.56e-21
-Time:                        13:34:42   Log-Likelihood:                -2378.6
+Time:                        09:06:18   Log-Likelihood:                -2378.6
 No. Observations:                2020   AIC:                             4765.
 Df Residuals:                    2016   BIC:                             4788.
 Df Model:                           3                                         
@@ -67,10 +67,10 @@ Notes:
 
 # Conditional Indirect Effect
 
-| Condition | Indirect Effect | 95% CI Lower | 95% CI Upper |
-|---|---|---|---|
-| Low Ethical Leadership (-1SD) | 0.096 | 0.065 | 0.128 |
-| High Ethical Leadership (+1SD) | 0.043 | 0.012 | 0.074 |
+| Condition | Indirect Effect |
+|---|---|
+| Low Ethical Leadership (-1SD) | 0.096 |
+| High Ethical Leadership (+1SD) | 0.043 |
 
 ---
 
@@ -91,26 +91,14 @@ Notes:
 ## Conditional Indirect Effect
 
 ### Low Ethical Leadership
-
 윤리적 리더십이 낮은 환경에서는
 조직동일시를 통한 UPB 증가 효과가
 상대적으로 강하게 나타날 가능성이 있음.
 
 ### High Ethical Leadership
-
 윤리적 리더십이 높은 환경에서는
 동일한 조직동일시가
 UPB로 이어지는 경향이 약화될 가능성이 있음.
-
----
-
-# Bootstrap Interpretation
-
-조건부 간접효과의 통계적 유의성은
-95% Bootstrap Confidence Interval 기준으로 검토하였다.
-
-신뢰구간에 0이 포함되지 않을 경우,
-조건부 간접효과가 유의한 것으로 해석할 수 있다.
 
 ---
 

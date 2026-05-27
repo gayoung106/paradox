@@ -1,0 +1,19 @@
+{
+  "max_revision_round": 3,
+
+  "rewrite_strategy": {
+    "major_revision": "substantive_rewrite",
+    "minor_revision": "targeted_revision"
+  },
+
+  "rewrite_priority": [
+    "major_concerns",
+    "logic_flow",
+    "contribution",
+    "writing_quality"
+  ],
+
+  "retain_original_logic": true,
+
+  "avoid_full_rewrite": true
+}

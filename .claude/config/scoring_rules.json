@@ -1,0 +1,33 @@
+{
+  "clarity": {
+    "weight": 0.15,
+    "threshold": 4
+  },
+
+  "logic_flow": {
+    "weight": 0.2,
+    "threshold": 4
+  },
+
+  "theoretical_contribution": {
+    "weight": 0.25,
+    "threshold": 4
+  },
+
+  "methodological_rigor": {
+    "weight": 0.2,
+    "threshold": 4
+  },
+
+  "writing_quality": {
+    "weight": 0.1,
+    "threshold": 4
+  },
+
+  "publication_potential": {
+    "weight": 0.1,
+    "threshold": 4
+  },
+
+  "overall_threshold": 4.0
+}

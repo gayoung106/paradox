@@ -90,13 +90,148 @@ low_el = -el_sd
 high_el = el_sd
 
 # conditional indirect effect
-low_indirect = a_path * (b1 + b3 * low_el)
+low_indirect = a_path * (
+    b1 + b3 * low_el
+)
 
-high_indirect = a_path * (b1 + b3 * high_el)
+high_indirect = a_path * (
+    b1 + b3 * high_el
+)
 
 print("\nConditional Indirect Effect")
 print("Low EL:", round(low_indirect, 3))
 print("High EL:", round(high_indirect, 3))
+
+# --------------------------------------------------
+# Bootstrap Conditional Indirect Effect
+# --------------------------------------------------
+
+def bootstrap_conditional_indirect(
+    data,
+    n_boot=5000,
+    seed=42
+):
+
+    np.random.seed(seed)
+
+    low_effects = []
+    high_effects = []
+
+    el_sd_boot = data["el_c"].std()
+
+    low_el_boot = -el_sd_boot
+    high_el_boot = el_sd_boot
+
+    for _ in range(n_boot):
+
+        # bootstrap sample
+        sample = data.sample(
+            n=len(data),
+            replace=True
+        ).copy()
+
+        # interaction 재생성
+        sample["oi_x_el"] = (
+            sample["oi_c"] * sample["el_c"]
+        )
+
+        # a path
+        a_model = smf.ols(
+            "oi_c ~ inclusion_c",
+            data=sample
+        ).fit()
+
+        # b path
+        b_model = smf.ols(
+            """
+            upb ~
+            oi_c +
+            el_c +
+            oi_x_el
+            """,
+            data=sample
+        ).fit()
+
+        try:
+
+            a = a_model.params["inclusion_c"]
+
+            b1_boot = b_model.params["oi_c"]
+
+            b3_boot = b_model.params["oi_x_el"]
+
+            # conditional indirect effect
+            low_ie = a * (
+                b1_boot + b3_boot * low_el_boot
+            )
+
+            high_ie = a * (
+                b1_boot + b3_boot * high_el_boot
+            )
+
+            low_effects.append(low_ie)
+            high_effects.append(high_ie)
+
+        except:
+
+            continue
+
+    # percentile bootstrap CI
+    low_ci = np.percentile(
+        low_effects,
+        [2.5, 97.5]
+    )
+
+    high_ci = np.percentile(
+        high_effects,
+        [2.5, 97.5]
+    )
+
+    return {
+
+        "low_effect": np.mean(low_effects),
+        "low_ci_lower": low_ci[0],
+        "low_ci_upper": low_ci[1],
+
+        "high_effect": np.mean(high_effects),
+        "high_ci_lower": high_ci[0],
+        "high_ci_upper": high_ci[1]
+    }
+
+# --------------------------------------------------
+# Bootstrap 실행
+# --------------------------------------------------
+
+boot_result = bootstrap_conditional_indirect(
+    df,
+    n_boot=5000
+)
+
+print("\nBootstrap Conditional Indirect Effect")
+
+print(
+    f"""
+Low EL (-1SD)
+Indirect Effect = {boot_result['low_effect']:.3f}
+
+95% Bootstrap CI:
+[
+{boot_result['low_ci_lower']:.3f},
+{boot_result['low_ci_upper']:.3f}
+]
+
+-----------------------------------
+
+High EL (+1SD)
+Indirect Effect = {boot_result['high_effect']:.3f}
+
+95% Bootstrap CI:
+[
+{boot_result['high_ci_lower']:.3f},
+{boot_result['high_ci_upper']:.3f}
+]
+"""
+)
 
 # --------------------------------------------------
 # 결과 폴더 생성
@@ -130,10 +265,10 @@ OI × Ethical Leadership → UPB
 
 # Conditional Indirect Effect
 
-| Condition | Indirect Effect |
-|---|---|
-| Low Ethical Leadership (-1SD) | {round(low_indirect, 3)} |
-| High Ethical Leadership (+1SD) | {round(high_indirect, 3)} |
+| Condition | Indirect Effect | 95% CI Lower | 95% CI Upper |
+|---|---|---|---|
+| Low Ethical Leadership (-1SD) | {boot_result['low_effect']:.3f} | {boot_result['low_ci_lower']:.3f} | {boot_result['low_ci_upper']:.3f} |
+| High Ethical Leadership (+1SD) | {boot_result['high_effect']:.3f} | {boot_result['high_ci_lower']:.3f} | {boot_result['high_ci_upper']:.3f} |
 
 ---
 
@@ -154,14 +289,26 @@ OI × Ethical Leadership → UPB
 ## Conditional Indirect Effect
 
 ### Low Ethical Leadership
+
 윤리적 리더십이 낮은 환경에서는
 조직동일시를 통한 UPB 증가 효과가
 상대적으로 강하게 나타날 가능성이 있음.
 
 ### High Ethical Leadership
+
 윤리적 리더십이 높은 환경에서는
 동일한 조직동일시가
 UPB로 이어지는 경향이 약화될 가능성이 있음.
+
+---
+
+# Bootstrap Interpretation
+
+조건부 간접효과의 통계적 유의성은
+95% Bootstrap Confidence Interval 기준으로 검토하였다.
+
+신뢰구간에 0이 포함되지 않을 경우,
+조건부 간접효과가 유의한 것으로 해석할 수 있다.
 
 ---
 
@@ -193,7 +340,9 @@ with open(
     f.write(md_content)
 
 print("\n조건부 간접효과 Markdown 저장 완료")
+
 print("\n저장 경로:")
+
 print(
     "../results/moderated_mediation/moderated_mediation_result.md"
 )
