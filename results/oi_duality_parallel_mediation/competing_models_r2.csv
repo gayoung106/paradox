@@ -1,0 +1,4 @@
+﻿Model,R²
+A: OCB ~ OI+DEI+controls,0.2239
+B: UPB ~ OI+DEI+controls,0.0947
+"C: (OCB,UPB) ~ OI+DEI+controls (병렬/다변량)","OCB=0.2239, UPB=0.0947, 근사 결합효과(1-ΠWilks'λ)=0.1572"

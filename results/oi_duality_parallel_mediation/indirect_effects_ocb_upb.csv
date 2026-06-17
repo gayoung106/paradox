@@ -1,0 +1,5 @@
+﻿Path,Indirect Effect,SE,95% CI
+Inclusion → OI → OCB,0.055,0.008,"[0.040, 0.072]"
+Equity → OI → OCB,0.049,0.008,"[0.035, 0.065]"
+Inclusion → OI → UPB,0.038,0.008,"[0.023, 0.056]"
+Equity → OI → UPB,0.034,0.008,"[0.020, 0.051]"

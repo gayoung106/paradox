@@ -1,0 +1,7 @@
+﻿Criterion,Observed Value,Judgment
+Harman single-factor variance (< 50%),33.6%,No serious CMB (well below 50%)
+"Method factor average variance explained (< 50%, ideally < 25%)",28.3%,Caution warranted
+"ΔCFI (CLF vs baseline, substantial change if >= .01~.02)",0.016,Statistically detectable but small absolute fit improvement
+ΔRMSEA (substantial change if decrease >= .015),-0.007,Small absolute change
+ΔSRMR (substantial change if decrease >= .01~.02),-0.014,Small absolute change
+Mean |Δ standardized loading| on substantive factors,0.267,Substantive loadings shift meaningfully
