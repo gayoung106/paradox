@@ -56,18 +56,25 @@ centering) 상호작용항으로 모형화하였다(기존 분석 파이프라�
 |:----------------------|------:|-----:|------:|------:|--------:|-------:|
 | Configural Invariance | 2355.72 |  724 | 0.950 | 0.944 |   0.033 |  0.043 |
 | Metric Invariance     | 2426.59 |  747 | 0.949 | 0.944 |   0.033 |  0.044 |
-| Scalar Invariance     | 3032.06 |  776 | 0.931 | 0.928 |   0.038 |  0.044 |
+| Scalar Invariance     | 2856.06 |  770 | 0.937 | 0.933 |   0.037 |  0.043 |
 
 *Note.* N(public) = 1,012; N(private) = 1,008. CFI = comparative fit index;
 TLI = Tucker–Lewis index; RMSEA = root mean square error of approximation;
-SRMR = standardized root mean square residual.
+SRMR = standardized root mean square residual. Scalar 단계의 df는 747(Metric) +
+23(항목 절편 29개 - 기준지표 6개 제외... 아님, 절편은 마커 제외 없이 29개 전부
+제약) 이 아니라 **747 + 23 = 770**이다 — 절편 29개를 두 집단 간 동일하게
+제약하는 대신, 기준집단(공공)의 잠재평균은 식별을 위해 0으로 고정하고
+비교집단(민간)의 잠재평균(요인당 1개, 6개)을 자유모수로 추정했기 때문에
+자유도 증가분이 29가 아니라 29-6=23이다(이전 버전은 이 6개를 자유추정하지
+않아 df=776, χ²=3032.06으로 과대추정되어 있었음 — 수정 이력은
+code/lib_scalar_invariance.py 및 tests/test_measurement_invariance_hs39.py 참고).
 
 **Table S2.** Nested Model Comparisons (Cheung & Rensvold, 2002 기준: ΔCFI ≤ .01)
 
 | Comparison           |    Δχ² | Δdf |   ΔCFI |   ΔTLI | ΔRMSEA | ΔSRMR | 판정                  |
 |:---------------------|-------:|----:|-------:|-------:|-------:|------:|:-----------------------|
 | Metric vs Configural |  70.87 |  23 | -0.001 |  0.000 | -0.000 | 0.001 | 지지됨 (ΔCFI ≤ .01)   |
-| Scalar vs Metric      | 605.47 |  29 | -0.018 | -0.016 |  0.005 | -0.000| 지지되지 않음 (ΔCFI > .01) |
+| Scalar vs Metric      | 429.47 |  23 | -0.012 | -0.011 |  0.003 | -0.001| 지지되지 않음 (ΔCFI > .01) |
 
 **해석.** 형태동일성과 요인동일성은 모두 Cheung & Rensvold(2002) 기준을 충족하여
 지지되었으나, 절편동일성(scalar)은 지지되지 않았다(부분동일성, partial invariance).
@@ -122,8 +129,8 @@ DEI 분위기 → 조직동일시 → UPB로 이어지는 역설적 메커니즘
 양호한 적합도를 보였다(χ²(724) = 2355.72, CFI = .950, TLI = .944, RMSEA = .033,
 SRMR = .043). 요인동일성 모형(χ²(747) = 2426.59, CFI = .949)은 형태동일성
 모형과 비교하여 ΔCFI = -.001로 Cheung과 Rensvold(2002)의 기준(ΔCFI ≤ .01)을
-충족하여 지지되었다. 반면 절편동일성 모형(χ²(776) = 3032.06, CFI = .931)은
-요인동일성 모형과 비교하여 ΔCFI = -.018로 기준을 초과하여 지지되지 않았다.
+충족하여 지지되었다. 반면 절편동일성 모형(χ²(770) = 2856.06, CFI = .937)은
+요인동일성 모형과 비교하여 ΔCFI = -.012로 기준을 초과하여 지지되지 않았다.
 
 요인동일성이 확보됨에 따라 공공-민간 두 집단 간 구조적 경로계수 비교가
 통계적으로 정당화되었다(Vandenberg & Lance, 2000). 이에 따라 다집단 경로모형을
