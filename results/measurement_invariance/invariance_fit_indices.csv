@@ -1,4 +1,4 @@
 ﻿Model,chi2,df,CFI,TLI,RMSEA,SRMR
 Configural Invariance,2355.72,724,0.95,0.944,0.033,0.043
 Metric Invariance,2426.59,747,0.949,0.944,0.033,0.044
-Scalar Invariance,3032.06,776,0.931,0.928,0.038,0.044
+Scalar Invariance,2856.06,770,0.937,0.933,0.037,0.043

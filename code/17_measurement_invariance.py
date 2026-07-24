@@ -5,6 +5,8 @@ import semopy
 from semopy import calc_stats
 import os
 
+from lib_scalar_invariance import fit_scalar_multigroup as _fit_scalar_multigroup_lib
+
 # --------------------------------------------------
 # 데이터 불러오기 및 집단 분리
 # --------------------------------------------------
@@ -125,86 +127,26 @@ def fit_covariance_multigroup(desc):
                 success=res.success)
 
 
-BIG_PENALTY = 1e8
-
-
-def _group_term(model, fun, grad, x_g, tau, xbar):
-    """Augmented normal-theory ML discrepancy for one group: covariance term
-    (semopy's validated MLW) plus a hand-derived mean term
-    (xbar - tau)' Sigma^-1 (xbar - tau), with analytic gradients verified
-    against finite differences. Used only at the scalar-invariance stage,
-    where item intercepts (tau) are constrained equal across groups and
-    therefore no longer trivially saturate the sample means."""
-    fcov = fun(x_g)
-    if not np.isfinite(fcov):
-        return BIG_PENALTY, np.zeros_like(x_g), np.zeros_like(tau)
-    try:
-        sigma, (m, c) = model.calc_sigma()
-        inv_sigma = np.linalg.inv(sigma)
-    except np.linalg.LinAlgError:
-        return BIG_PENALTY, np.zeros_like(x_g), np.zeros_like(tau)
-    r = xbar - tau
-    fmean = r @ inv_sigma @ r
-    sigma_grad = model.calc_sigma_grad(m, c)
-    grad_theta = grad(x_g) + np.array(
-        [-(r @ inv_sigma @ g @ inv_sigma @ r) for g in sigma_grad]
-    )
-    grad_tau = -2 * inv_sigma @ r
-    return fcov + fmean, grad_theta, grad_tau
+# --------------------------------------------------
+# Scalar 단계 (절편동일성)
+# --------------------------------------------------
+# 구현은 code/lib_scalar_invariance.py로 분리했다. 기존 로컬 구현은
+# 절편(tau)만 두 집단 간 동일하게 제약하고, 비교집단(민간)의 잠재평균을
+# 0으로 암묵적으로 고정한 채 자유모수로 풀어주지 않는 버그가 있었다
+# (표준 절편동일성 검정은 기준집단만 잠재평균=0으로 고정하고, 비교집단의
+# 잠재평균은 요인 수만큼 자유추정해야 함 -- Bollen, 1989). 이로 인해
+# 자유도가 요인 수(6)만큼 과다 계상되고 Scalar 단계 chi2가 과대추정되었다.
+# 수정된 구현은 Holzinger & Swineford(1939) 다집단 CFA 표준 벤치마크
+# (lavaan tutorial 게재값: configural chi2=115.85/df=48, metric
+# chi2=124.04/df=54, scalar chi2=164.10/df=60)로 검증했다
+# (tests/test_measurement_invariance_hs39.py, 4개 테스트 전부 통과).
 
 
 def fit_scalar_multigroup(desc):
-    """Scalar stage: loadings remain equality-constrained (as in the metric
-    model) and item intercepts are additionally constrained equal across
-    groups (INV_I_* shared labels), modeled via the augmented mean+covariance
-    ML discrepancy function defined above."""
-    pub_model = semopy.Model(desc)
-    priv_model = semopy.Model(desc)
-    pub_model.load(pub_df)
-    priv_model.load(priv_df)
-
-    global_index, global_start, bounds = {}, [], []
-    pub_map = joint_register(pub_model, "PUB", global_index, global_start, bounds)
-    priv_map = joint_register(priv_model, "PRIV", global_index, global_start, bounds)
-
-    tau_start = len(global_start)
-    xbar_pub = pub_df[ALL_ITEMS].mean().values
-    xbar_priv = priv_df[ALL_ITEMS].mean().values
-    n_pub, n_priv = pub_model.n_samples, priv_model.n_samples
-    tau0 = (xbar_pub * n_pub + xbar_priv * n_priv) / (n_pub + n_priv)
-    for v in tau0:
-        global_start.append(v)
-        bounds.append((None, None))
-    tau_idx = np.arange(tau_start, tau_start + P)
-
-    fun_pub, grad_pub = pub_model.get_objective("MLW")
-    fun_priv, grad_priv = priv_model.get_objective("MLW")
-
-    def objective(x):
-        xp, xv, tau = x[pub_map], x[priv_map], x[tau_idx]
-        fp, gp, gtp = _group_term(pub_model, fun_pub, grad_pub, xp, tau, xbar_pub)
-        fv, gv, gtv = _group_term(priv_model, fun_priv, grad_priv, xv, tau, xbar_priv)
-        val = n_pub * fp + n_priv * fv
-        g = np.zeros_like(x)
-        np.add.at(g, pub_map, n_pub * gp)
-        np.add.at(g, priv_map, n_priv * gv)
-        g[tau_idx] += n_pub * gtp + n_priv * gtv
-        return val, g
-
-    x0 = np.array(global_start, dtype=float)
-    res = minimize(objective, x0, jac=True, method="SLSQP", bounds=bounds,
-                    options={"maxiter": 5000, "ftol": 1e-12})
-
-    pub_model.param_vals = res.x[pub_map]
-    pub_model.update_matrices(res.x[pub_map])
-    priv_model.param_vals = res.x[priv_map]
-    priv_model.update_matrices(res.x[priv_map])
-
-    n_params = len(res.x)
-    dof = 2 * (P * (P + 3) // 2) - n_params
-    return dict(chi2=res.fun, dof=dof, n_params=n_params,
-                pub_model=pub_model, priv_model=priv_model,
-                success=res.success)
+    res = _fit_scalar_multigroup_lib(pub_df, priv_df, desc, ALL_ITEMS, len(FACTOR_ITEMS))
+    return dict(chi2=res["chi2"], dof=res["dof"], n_params=res["n_params"],
+                pub_model=res["m1"], priv_model=res["m2"],
+                success=res["success"], kappa=res["kappa"])
 
 
 # --------------------------------------------------
@@ -352,6 +294,23 @@ metric_supported = abs(delta_table.loc[0, "ΔCFI"]) <= 0.01
 scalar_supported = abs(delta_table.loc[1, "ΔCFI"]) <= 0.01
 
 # --------------------------------------------------
+# 잠재평균 비교 (절편동일성이 지지될 때만 해석 가능)
+# 기준집단(공공)의 잠재평균은 0으로 고정, 민간의 잠재평균(kappa)을
+# 자유추정한 결과. Bollen(1989); 절편동일성 미지지 시에는 참고용으로만
+# 보고하고 본문 해석에는 사용하지 않는다.
+# --------------------------------------------------
+
+latent_mean_table = pd.DataFrame({
+    "요인": list(FACTOR_ITEMS.keys()),
+    "민간 잠재평균(공공=0 기준)": np.round(res_scalar["kappa"], 4),
+})
+
+print("\n[잠재평균 비교: 민간 - 공공 (공공=0 기준)]")
+print(latent_mean_table)
+print(f"절편동일성 지지 여부: {scalar_supported} "
+      f"({'잠재평균 비교 해석 가능' if scalar_supported else '해석 시 유의 필요 - 참고용'})")
+
+# --------------------------------------------------
 # 결과 저장
 # --------------------------------------------------
 
@@ -360,6 +319,7 @@ os.makedirs(out_dir, exist_ok=True)
 
 fit_table.to_csv(os.path.join(out_dir, "invariance_fit_indices.csv"), index=False, encoding="utf-8-sig")
 delta_table.to_csv(os.path.join(out_dir, "invariance_delta_comparison.csv"), index=False, encoding="utf-8-sig")
+latent_mean_table.to_csv(os.path.join(out_dir, "latent_mean_comparison.csv"), index=False, encoding="utf-8-sig")
 
 # --------------------------------------------------
 # SSCI Results 문단 (한국어)
@@ -444,7 +404,12 @@ semopy는 lavaan 식의 다집단 동일성 제약(group.equal)을 직접 지원
 순수 공분산구조모형(절편은 양쪽 집단에서 자유추정·포화되어 평균구조의 적합도
 기여가 0이 되는 표준적 관행과 일치)으로, Scalar 단계는 절편을 두 집단 간 동일하게
 제약한 평균+공분산 결합 ML 판별함수(Bollen, 1989의 augmented ML fit function)로
-추정하였다(해석적 기울기는 수치미분으로 검증함).
+추정하였다(해석적 기울기는 수치미분으로 검증함). 기준집단(공공)의 잠재평균은
+식별을 위해 0으로 고정하고, 비교집단(민간)의 잠재평균(요인당 1개, 6개)은
+자유모수로 추정하였다 — 이 6개 자유모수가 절편동일성 검정의 정확한 자유도
+산정에 필수적이며(생략 시 자유도가 요인 수만큼 과다 계상됨), 구현은
+Holzinger & Swineford(1939) 다집단 CFA 표준 벤치마크로 검증하였다
+(code/lib_scalar_invariance.py, tests/test_measurement_invariance_hs39.py).
 
 ## 2. 적합도 지표
 
@@ -456,6 +421,12 @@ semopy는 lavaan 식의 다집단 동일성 제약(group.equal)을 직접 지원
 
 - 요인동일성(Metric) 지지 여부: {"지지됨" if metric_supported else "지지되지 않음"}
 - 절편동일성(Scalar) 지지 여부: {"지지됨" if scalar_supported else "지지되지 않음"}
+
+## 3b. 잠재평균 비교 (민간 - 공공, 공공=0 기준)
+
+{latent_mean_table.to_markdown(index=False)}
+
+{"절편동일성이 지지되어 잠재평균 비교가 통계적으로 정당화된다." if scalar_supported else "절편동일성이 지지되지 않았으므로, 위 잠재평균 값은 참고용으로만 제시하며 본문 해석에는 사용하지 않는다(Vandenberg & Lance, 2000)."}
 
 ## 4. SSCI Results 섹션 문단 (한국어, 바로 삽입 가능)
 
