@@ -1,0 +1,14 @@
+﻿dv,predictor,beta_std,p,sig
+oi,g_dei,0.513,0.0,***
+oi,equity_s,-0.0,0.248,ns
+oi,inclusion_s,0.203,0.0,***
+upb,g_dei,0.242,0.001,**
+upb,equity_s,0.0,0.589,ns
+upb,inclusion_s,-0.054,0.067,ns
+upb,oi,0.187,0.0,***
+upb,el,-0.073,0.461,ns
+ocb,g_dei,-0.099,0.296,ns
+ocb,equity_s,0.0,0.183,ns
+ocb,inclusion_s,0.267,0.0,***
+ocb,oi,0.265,0.0,***
+ocb,el,0.367,0.003,**

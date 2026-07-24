@@ -1,0 +1,9 @@
+﻿dei,effect,sem_est,pct_lo,pct_hi,zero_in,ols_est
+equity,indirect,0.0837,0.0448,0.1247,no,0.048
+equity,direct,0.1981,0.1292,0.268,no,
+equity,a,0.5373,0.4933,0.5788,no,
+equity,b_upb,0.1557,0.0849,0.2267,no,
+inclusion,indirect,0.1144,0.0715,0.1601,no,0.078
+inclusion,direct,0.1046,0.0322,0.1816,no,
+inclusion,a,0.5652,0.5187,0.6075,no,
+inclusion,b_upb,0.2023,0.1269,0.28,no,

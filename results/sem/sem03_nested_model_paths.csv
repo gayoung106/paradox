@@ -1,0 +1,19 @@
+﻿단계,dv,predictor,beta_std,p
+A: equity 단독,ocb,equity,0.1559,0.0
+A: equity 단독,upb,inclusion,,
+A: equity 단독,ocb,inclusion,,
+A: equity 단독,upb,equity,0.1979,0.0
+A: equity 단독,oi,equity,0.5389,0.0
+A: equity 단독,oi,inclusion,,
+B: +inclusion,ocb,equity,-0.164,0.0
+B: +inclusion,upb,inclusion,-0.0983,0.0194
+B: +inclusion,ocb,inclusion,0.4524,0.0
+B: +inclusion,upb,equity,0.2628,0.0
+B: +inclusion,oi,equity,0.2851,0.0
+B: +inclusion,oi,inclusion,0.3177,0.0
+C: +EL (완전),ocb,equity,-0.2263,0.0
+C: +EL (완전),upb,inclusion,-0.0968,0.0239
+C: +EL (완전),ocb,inclusion,0.4372,0.0
+C: +EL (완전),upb,equity,0.269,0.0
+C: +EL (완전),oi,equity,0.286,0.0
+C: +EL (완전),oi,inclusion,0.3165,0.0

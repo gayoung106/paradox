@@ -1,0 +1,8 @@
+﻿aspect,PI_est,PI_BCa_CI,PI_0in,Hyb_est,Hyb_BCa_CI,Hyb_0in,OLS_ref
+Interaction OI x EL -> UPB,-0.087,"[-0.148,-0.022]",no,N/A,N/A,N/A,beta=-.062 (p=.011)
+IE equity (EL-1SD),0.073,"[0.042,0.113]",no,0.071,"[0.042,0.108]",no,.095
+IE equity (EL+1SD),0.024,"[-0.003,0.057]",yes,0.026,"[0.000,0.059]",no,.046
+IE inclusion (EL-1SD),0.083,"[0.049,0.125]",no,0.078,"[0.047,0.118]",no,n/a
+IE inclusion (EL+1SD),0.027,"[-0.003,0.063]",yes,0.029,"[0.000,0.063]",no,n/a
+OI->UPB slope (EL-1SD),0.258,"[0.161,0.354]",no,0.247,"[0.159,0.337]",no,n/a
+OI->UPB slope (EL+1SD),0.084,"[-0.012,0.188]",yes,0.091,"[-0.003,0.187]",yes,n/a

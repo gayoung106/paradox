@@ -1,0 +1,5 @@
+﻿contrast,label,est,pct_lo,pct_hi,zero_in_pct,bca_lo,bca_hi,zero_in_bca
+d_OCB,d_OCB = incl_ocb - eq_ocb,0.663,0.497,0.823,no,0.493,0.819,no
+d_UPB,d_UPB = eq_upb - incl_upb,0.366,0.19,0.547,no,0.182,0.541,no
+sig_incl,sig_incl = incl_ocb - incl_upb,0.534,0.407,0.66,no,0.406,0.659,no
+sig_eq,sig_eq = eq_upb - eq_ocb,0.495,0.349,0.648,no,0.344,0.639,no

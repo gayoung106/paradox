@@ -1,0 +1,5 @@
+﻿path,zero_r,A_equity_only,B_plus_incl,C_plus_EL_ctrl,suppressor
+형평→OCB,0.297,0.156,-0.164,-0.226,REVERSED
+포용→OCB,0.484,n/a,0.452,0.437,n/a
+형평→UPB,0.296,0.198,0.263,0.269,stable
+포용→UPB,0.183,n/a,-0.098,-0.097,n/a

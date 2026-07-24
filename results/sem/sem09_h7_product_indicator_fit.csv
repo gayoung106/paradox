@@ -1,0 +1,2 @@
+﻿chi2,df,CFI,TLI,RMSEA,n_boot,n_valid,n_jfail,boot_time_s,jack_time_s
+2799.86,608,0.9403,0.9343,0.0423,2000,2000,0,367.6,367.3
