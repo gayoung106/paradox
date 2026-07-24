@@ -33,6 +33,24 @@ df["el_c"] = (
 )
 
 # --------------------------------------------------
+# 통제변수 (성별·연령·조직유형; 05/11번과 동일한 사양)
+# --------------------------------------------------
+
+# SQ1K1 값 코드: 1.0=남자, 2.0=여자 (raw_data.sav 값 라벨 기준)
+df["gender_male"] = (
+    df["SQ1K1"] == 1.0
+).astype(int)
+
+# 연령 (출생연도 -> 연령 환산; 조사 기준연도 2023년)
+df["age"] = 2023 - df["SQ1K2_1"]
+
+df["public_org"] = (
+    df["유형"] == "공공"
+).astype(int)
+
+CONTROLS = ["gender_male", "age", "public_org"]
+
+# --------------------------------------------------
 # interaction
 # --------------------------------------------------
 
@@ -46,7 +64,7 @@ df["oi_x_el"] = (
 # --------------------------------------------------
 
 model_a = smf.ols(
-    "oi_c ~ inclusion_c",
+    "oi_c ~ inclusion_c + gender_male + age + public_org",
     data=df
 ).fit(cov_type="HC3")
 
@@ -63,7 +81,10 @@ model_b = smf.ols(
     upb ~
     oi_c +
     el_c +
-    oi_x_el
+    oi_x_el +
+    gender_male +
+    age +
+    public_org
     """,
     data=df
 ).fit(cov_type="HC3")
@@ -137,7 +158,7 @@ def bootstrap_conditional_indirect(
 
         # a path
         a_model = smf.ols(
-            "oi_c ~ inclusion_c",
+            "oi_c ~ inclusion_c + gender_male + age + public_org",
             data=sample
         ).fit()
 
@@ -147,7 +168,10 @@ def bootstrap_conditional_indirect(
             upb ~
             oi_c +
             el_c +
-            oi_x_el
+            oi_x_el +
+            gender_male +
+            age +
+            public_org
             """,
             data=sample
         ).fit()

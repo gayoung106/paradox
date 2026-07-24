@@ -1,0 +1,16 @@
+﻿construct_i,construct_j,HTMT,boot_mean,boot_se,ci_lower,ci_upper,ci_upper_exceeds_0.85,ci_upper_exceeds_1.00
+equity,inclusion,0.7195,0.7197,0.0169,0.6855,0.7521,False,False
+equity,oi,0.5219,0.5217,0.0228,0.4767,0.5651,False,False
+equity,el,0.7307,0.731,0.0159,0.699,0.7613,False,False
+equity,ocb,0.2917,0.2914,0.0271,0.2369,0.3439,False,False
+equity,upb,0.3113,0.311,0.029,0.2531,0.3661,False,False
+inclusion,oi,0.5238,0.5237,0.0239,0.4749,0.569,False,False
+inclusion,el,0.6313,0.631,0.0206,0.5913,0.6702,False,False
+inclusion,ocb,0.4831,0.4828,0.0268,0.43,0.5339,False,False
+inclusion,upb,0.196,0.1963,0.0292,0.14,0.2531,False,False
+oi,el,0.4662,0.4664,0.0252,0.4171,0.5127,False,False
+oi,ocb,0.4541,0.4542,0.0266,0.4013,0.5044,False,False
+oi,upb,0.2603,0.2605,0.0283,0.2052,0.3165,False,False
+el,ocb,0.3398,0.3396,0.0263,0.287,0.3923,False,False
+el,upb,0.2174,0.2176,0.0288,0.1613,0.2726,False,False
+ocb,upb,0.1498,0.1524,0.0257,0.1026,0.2032,False,False

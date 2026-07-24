@@ -6,25 +6,28 @@ Inclusion Climate → Organizational Identification
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                   oi_c   R-squared:                       0.197
-Model:                            OLS   Adj. R-squared:                  0.197
-Method:                 Least Squares   F-statistic:                     393.4
-Date:                Wed, 27 May 2026   Prob (F-statistic):           4.00e-80
-Time:                        13:34:42   Log-Likelihood:                -2138.5
-No. Observations:                2020   AIC:                             4281.
-Df Residuals:                    2018   BIC:                             4292.
-Df Model:                           1                                         
+Dep. Variable:                   oi_c   R-squared:                       0.269
+Model:                            OLS   Adj. R-squared:                  0.267
+Method:                 Least Squares   F-statistic:                     171.2
+Date:                Fri, 24 Jul 2026   Prob (F-statistic):          2.70e-126
+Time:                        14:42:37   Log-Likelihood:                -2044.5
+No. Observations:                2020   AIC:                             4099.
+Df Residuals:                    2015   BIC:                             4127.
+Df Model:                           4                                         
 Covariance Type:                  HC3                                         
 ===============================================================================
                   coef    std err          z      P>|z|      [0.025      0.975]
 -------------------------------------------------------------------------------
-Intercept   -9.415e-16      0.016  -6.06e-14      1.000      -0.030       0.030
-inclusion_c     0.4290      0.022     19.834      0.000       0.387       0.471
+Intercept      -0.8543      0.072    -11.796      0.000      -0.996      -0.712
+inclusion_c     0.4115      0.021     19.718      0.000       0.371       0.452
+gender_male    -0.0131      0.031     -0.425      0.671      -0.074       0.047
+age             0.0215      0.002     13.118      0.000       0.018       0.025
+public_org     -0.0508      0.031     -1.654      0.098      -0.111       0.009
 ==============================================================================
-Omnibus:                       28.724   Durbin-Watson:                   1.843
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               29.793
-Skew:                          -0.279   Prob(JB):                     3.39e-07
-Kurtosis:                       3.206   Cond. No.                         1.24
+Omnibus:                       22.335   Durbin-Watson:                   1.905
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               22.864
+Skew:                          -0.247   Prob(JB):                     1.08e-05
+Kurtosis:                       3.168   Cond. No.                         214.
 ==============================================================================
 
 Notes:
@@ -37,27 +40,30 @@ OI × Ethical Leadership → UPB
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                    upb   R-squared:                       0.063
-Model:                            OLS   Adj. R-squared:                  0.062
-Method:                 Least Squares   F-statistic:                     34.16
-Date:                Wed, 27 May 2026   Prob (F-statistic):           1.56e-21
-Time:                        13:34:42   Log-Likelihood:                -2378.6
-No. Observations:                2020   AIC:                             4765.
-Df Residuals:                    2016   BIC:                             4788.
-Df Model:                           3                                         
+Dep. Variable:                    upb   R-squared:                       0.081
+Model:                            OLS   Adj. R-squared:                  0.079
+Method:                 Least Squares   F-statistic:                     23.81
+Date:                Fri, 24 Jul 2026   Prob (F-statistic):           2.47e-27
+Time:                        14:42:37   Log-Likelihood:                -2358.7
+No. Observations:                2020   AIC:                             4731.
+Df Residuals:                    2013   BIC:                             4771.
+Df Model:                           6                                         
 Covariance Type:                  HC3                                         
+===============================================================================
+                  coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept       3.3276      0.086     38.643      0.000       3.159       3.496
+oi_c            0.1707      0.028      6.178      0.000       0.117       0.225
+el_c            0.0972      0.023      4.201      0.000       0.052       0.142
+oi_x_el        -0.0623      0.025     -2.539      0.011      -0.110      -0.014
+gender_male     0.0007      0.036      0.020      0.984      -0.070       0.072
+age            -0.0067      0.002     -3.324      0.001      -0.011      -0.003
+public_org     -0.2128      0.035     -6.025      0.000      -0.282      -0.144
 ==============================================================================
-                 coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept      2.9460      0.018    163.183      0.000       2.911       2.981
-oi_c           0.1619      0.027      6.035      0.000       0.109       0.214
-el_c           0.0960      0.023      4.181      0.000       0.051       0.141
-oi_x_el       -0.0647      0.024     -2.650      0.008      -0.112      -0.017
-==============================================================================
-Omnibus:                       20.865   Durbin-Watson:                   1.906
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               21.399
-Skew:                          -0.250   Prob(JB):                     2.26e-05
-Kurtosis:                       2.933   Cond. No.                         1.79
+Omnibus:                       15.130   Durbin-Watson:                   1.952
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):               15.359
+Skew:                          -0.214   Prob(JB):                     0.000462
+Kurtosis:                       2.992   Cond. No.                         221.
 ==============================================================================
 
 Notes:
@@ -69,8 +75,8 @@ Notes:
 
 | Condition | Indirect Effect | 95% CI Lower | 95% CI Upper |
 |---|---|---|---|
-| Low Ethical Leadership (-1SD) | 0.096 | 0.065 | 0.128 |
-| High Ethical Leadership (+1SD) | 0.043 | 0.012 | 0.074 |
+| Low Ethical Leadership (-1SD) | 0.095 | 0.064 | 0.126 |
+| High Ethical Leadership (+1SD) | 0.046 | 0.016 | 0.076 |
 
 ---
 

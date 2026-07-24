@@ -19,9 +19,13 @@ print("데이터 크기:", df.shape)
 # --------------------------------------------------
 
 # 성별 더미화
+# SQ1K1 값 코드: 1.0=남자, 2.0=여자 (raw_data.sav 값 라벨 기준)
 df["gender_male"] = (
-    df["SQ1K1"] == "남자"
+    df["SQ1K1"] == 1.0
 ).astype(int)
+
+# 연령 (출생연도 -> 연령 환산; 조사 기준연도 2023년)
+df["age"] = 2023 - df["SQ1K2_1"]
 
 # 공공 여부 더미화
 df["public_org"] = (
@@ -57,7 +61,7 @@ def run_regression(name, x_vars):
 
 model1_vars = [
     "gender_male",
-    "SQ1K2_1",
+    "age",
     "public_org"
 ]
 
