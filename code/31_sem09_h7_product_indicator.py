@@ -60,6 +60,16 @@ CTRL = "+ gender_male + age + public_org"
 # Product indicator factor: latent oi_el from 5 product indicators
 PI_MEAS = "oi_el =~ " + " + ".join(PI_ITEMS)
 
+# Residual covariances among the 5 product indicators are left at semopy's
+# default (fixed to 0), i.e. unconstrained/independent uniquenesses. This
+# was tested with all C(5,2)=10 pairwise covariances freed instead (Marsh,
+# Wen, & Hau 2004-style), but that model was empirically near-unidentified
+# with this matched-pairs design (SEs 5-20x the point estimates, since all
+# 5 indicators are built from only 2 underlying factors, OI and EL -- too
+# little independent information to pin down 10 extra covariance
+# parameters). Matched-pairs indicators also do not share a first-order
+# item the way Marsh et al.'s classic all-pairs justification assumes, so
+# independent uniquenesses is the correct default here, not a shortcut.
 MODEL_DESC = f"""
 {MEAS}
 {PI_MEAS}
