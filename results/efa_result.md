@@ -1,58 +1,52 @@
-
 # EFA Result
 
-## 데이터 크기
-- (2020, 10)
+## Data
+
+- N = 2,020
+- Items = Y8_1 to Y8_10
 
 ---
 
-# KMO
+## Factorability
 
-- KMO = 0.933
+- KMO = .933
+- Bartlett's test of sphericity: p < .001
 
-## 해석
-KMO 값이 .90 이상으로 매우 우수한 수준으로 나타나,
-요인분석에 적합한 데이터로 판단된다.
-
----
-
-# Bartlett 구형성 검정
-
-- p-value = 0.0
-
-## 해석
-Bartlett 검정 결과 통계적으로 유의하게 나타나(p < .001),
-변수 간 상관관계가 존재하며 요인분석 수행이 적절한 것으로 확인되었다.
+The KMO value and Bartlett's test indicate that the DEI climate items are suitable for exploratory factor analysis.
 
 ---
 
-# 요인적재량
+## Extraction and Rotation
 
-|       |   Factor1 |   Factor2 |
-|:------|----------:|----------:|
-| Y8_1  |     0.855 |    -0.102 |
-| Y8_2  |     0.846 |    -0.041 |
-| Y8_3  |     0.739 |     0.04  |
-| Y8_4  |     0.782 |     0.055 |
-| Y8_5  |     0.789 |     0.07  |
-| Y8_6  |     0.348 |     0.493 |
-| Y8_7  |    -0.071 |     0.835 |
-| Y8_8  |    -0.019 |     0.799 |
-| Y8_9  |     0.138 |     0.708 |
-| Y8_10 |     0.525 |     0.279 |
+- Extraction method: minimum residual (MINRES)
+- Rotation: oblimin oblique rotation
+- Number of factors: 2
+
+The two-factor solution was selected based on the eigenvalue-greater-than-one criterion and inspection of the scree plot.
 
 ---
 
-# 해석
+## Factor Loadings and Communalities
 
-## Factor1
-- Y8_1 ~ Y8_5 문항이 높게 적재됨
-- 조직의 다양성·형평성·공정한 운영 체계에 관한 차원으로 해석 가능
+| Item | Equity factor loading | Inclusion factor loading | Communality |
+|---|---:|---:|---:|
+| Y8_1 | .855 | -.102 | .741 |
+| Y8_2 | .846 | -.041 | .717 |
+| Y8_3 | .739 | .040 | .548 |
+| Y8_4 | .782 | .055 | .615 |
+| Y8_5 | .789 | .070 | .627 |
+| Y8_6 | .348 | .493 | .364 |
+| Y8_7 | -.071 | .835 | .702 |
+| Y8_8 | -.019 | .799 | .639 |
+| Y8_9 | .138 | .708 | .520 |
+| Y8_10 | .525 | .279 | .353 |
 
-## Factor2
-- Y8_6 ~ Y8_9 문항이 높게 적재됨
-- 조직 내 심리적 포용성과 소속감에 관한 차원으로 해석 가능
+Note. Factor loadings with absolute values below .30 are not interpreted substantively.
 
-## Y8_10
-- 두 요인에 모두 일부 적재되는 경향이 나타남
-- 개념적 혼재 가능성이 있어 후속 분석에서 제외
+---
+
+## Interpretation
+
+Y8_1 to Y8_5 loaded clearly on the equity factor. Y8_6 to Y8_9 loaded primarily on the inclusion factor, although Y8_6 showed a secondary loading on the equity factor.
+
+Y8_10 showed a cross-loading pattern, with a loading of .525 on the equity factor and .279 on the inclusion factor. Because this item was theoretically ambiguous and did not cleanly represent one DEI dimension, it was excluded from subsequent analyses.
