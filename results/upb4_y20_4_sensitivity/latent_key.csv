@@ -1,0 +1,8 @@
+﻿effect,estimate
+Equity -> OI,0.28602373490024413
+Inclusion -> OI,0.3165580674251441
+OI -> UPB4,0.18495674302362547
+Equity -> UPB4 direct,0.2725828456274728
+Inclusion -> UPB4 direct,-0.10489741865099704
+Equity -> OI -> UPB4 indirect,0.05290201843460203
+Inclusion -> OI -> UPB4 indirect,0.05854954912880788

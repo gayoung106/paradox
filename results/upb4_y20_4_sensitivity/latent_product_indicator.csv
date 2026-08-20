@@ -1,0 +1,8 @@
+﻿effect,estimate
+OI x EL -> UPB4,-0.0850508742957494
+OI -> UPB4 at low EL,0.2583853999215556
+OI -> UPB4 at high EL,0.08828365133005683
+Equity conditional indirect at low EL,0.07292633051208836
+Equity conditional indirect at high EL,0.024917053121671334
+Inclusion conditional indirect at low EL,0.0828207623548402
+Inclusion conditional indirect at high EL,0.0282977262215435
