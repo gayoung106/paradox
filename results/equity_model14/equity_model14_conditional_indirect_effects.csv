@@ -1,0 +1,7 @@
+﻿DEI dimension,EL level,Conditional indirect effect (B),Bootstrap SE,95% Bootstrap CI,Decision
+Equity,-1 SD,0.08668251748892535,0.0148169097221407,"[0.058, 0.117]",significant
+Equity,Mean,0.06427051139559173,0.011356557257415334,"[0.043, 0.087]",significant
+Equity,+1 SD,0.04185850530225809,0.014119426513394815,"[0.014, 0.070]",significant
+Inclusion,-1 SD,0.09463296163437862,0.01588386847157897,"[0.064, 0.126]",significant
+Inclusion,Mean,0.07015843418640598,0.012153655123039413,"[0.047, 0.095]",significant
+Inclusion,+1 SD,0.045683906738433325,0.015305016837153495,"[0.016, 0.076]",significant
