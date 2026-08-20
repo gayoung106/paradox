@@ -55,6 +55,7 @@ print("Bartlett p-value:", p_value)
 
 fa = FactorAnalyzer(
     n_factors=2,
+    method="minres",
     rotation="oblimin"
 )
 
@@ -69,6 +70,7 @@ loadings = pd.DataFrame(
     index=dei_cols,
     columns=["Factor1", "Factor2"]
 )
+loadings["Communality"] = fa.get_communalities()
 
 print("\n요인적재량")
 print(loadings.round(3))
