@@ -1,0 +1,6 @@
+Run: latent H3 standardized path-difference bootstrap
+Requested repetitions: 2,000
+Seed: 20261020
+Outcome: process terminated by the execution environment at 600.2 seconds before output serialization.
+Interpretation: no estimate from this interrupted run was used or reported.
+Resolution: the same prespecified analysis was rerun with 1,000 repetitions; all 1,000 fits were valid. Results are in tables/latent_h3_path_difference_bootstrap.csv and the main execution log.

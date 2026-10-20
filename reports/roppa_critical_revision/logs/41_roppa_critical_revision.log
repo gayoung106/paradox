@@ -1,0 +1,111 @@
+Data: C:\Users\KMI\Desktop\gayoung\paradox\processed\analysis_data.csv
+Shape: (2020, 45); complete focal cases: 2020
+Python: 3.11.9; platform: Windows-10-10.0.26200-SP0
+pandas=3.0.3; numpy=2.4.6; scipy=1.17.1
+statsmodels=0.14.6; semopy=2.3.11
+Age rule: 2024 - SQ1K2_1; controls: male, age, public
+
+Zero-order focal correlations:
+                     equity_climate  inclusion_climate  org_identification  ethical_leadership     ocb     upb
+equity_climate              1.0000             0.6358              0.4537              0.6681  0.2503  0.2689
+inclusion_climate           0.6358             1.0000              0.4440              0.5652  0.4038  0.1662
+org_identification          0.4537             0.4440              1.0000              0.4102  0.3727  0.2142
+ethical_leadership          0.6681             0.5652              0.4102              1.0000  0.2954  0.1899
+ocb                         0.2503             0.4038              0.3727              0.2954  1.0000  0.1129
+upb                         0.2689             0.1662              0.2142              0.1899  0.1129  1.0000
+
+Staged focal regressions:
+ outcome              model          predictor    beta  ci_low  ci_high      p  r_squared    n
+    ocb      A_equity_only     equity_climate  0.2690  0.2188   0.3193 0.0000     0.0908 2020
+    ocb   B_inclusion_only  inclusion_climate  0.4009  0.3499   0.4519 0.0000     0.1822 2020
+    ocb C_equity_inclusion     equity_climate  0.0089 -0.0478   0.0656 0.7585     0.1823 2020
+    ocb C_equity_inclusion  inclusion_climate  0.3953  0.3341   0.4565 0.0000     0.1823 2020
+    ocb          D_plus_OI     equity_climate -0.0553 -0.1111   0.0005 0.0523     0.2239 2020
+    ocb          D_plus_OI  inclusion_climate  0.3311  0.2698   0.3923 0.0000     0.2239 2020
+    ocb          D_plus_OI org_identification  0.2451  0.1908   0.2994 0.0000     0.2239 2020
+    upb      A_equity_only     equity_climate  0.2573  0.2061   0.3084 0.0000     0.0804 2020
+    upb   B_inclusion_only  inclusion_climate  0.1639  0.1148   0.2129 0.0000     0.0446 2020
+    upb C_equity_inclusion     equity_climate  0.2537  0.1895   0.3180 0.0000     0.0804 2020
+    upb C_equity_inclusion  inclusion_climate  0.0054 -0.0551   0.0659 0.8614     0.0804 2020
+    upb          D_plus_OI     equity_climate  0.2161  0.1514   0.2807 0.0000     0.0947 2020
+    upb          D_plus_OI  inclusion_climate -0.0323 -0.0943   0.0297 0.3070     0.0947 2020
+    upb          D_plus_OI org_identification  0.1437  0.0893   0.1981 0.0000     0.0947 2020
+
+Max focal VIF by model:
+ outcome  model             
+ocb      A_equity_only         1.0603
+         B_inclusion_only      1.0065
+         C_equity_inclusion    1.8003
+         D_plus_OI             1.8993
+upb      A_equity_only         1.0603
+         B_inclusion_only      1.0065
+         C_equity_inclusion    1.8003
+         D_plus_OI             1.8993
+
+Item-deletion SEM fit:
+    variant      chi2  df    CFI    TLI  RMSEA   SRMR    n
+  original 2448.5578 448 0.9404 0.9336 0.0470 0.0414 2020
+ drop_Y8_4 2290.2115 418 0.9405 0.9334 0.0471 0.0414 2020
+drop_Y11_1 2357.0466 418 0.9385 0.9311 0.0479 0.0414 2020
+
+Item-deletion SEM paths:
+    variant               path       b     se       z  p_wald  beta_std
+  original         equity->oi  0.2473 0.0311  7.9535  0.0000    0.2860
+  original      inclusion->oi  0.2742 0.0321  8.5497  0.0000    0.3165
+  original            oi->upb  0.2296 0.0426  5.3897  0.0000    0.1822
+  original            oi->ocb  0.2325 0.0273  8.5182  0.0000    0.2867
+  original        equity->upb  0.2930 0.0522  5.6178  0.0000    0.2690
+  original     inclusion->upb -0.1057 0.0468 -2.2588  0.0239   -0.0968
+  original        equity->ocb -0.1586 0.0324 -4.9039  0.0000   -0.2263
+  original     inclusion->ocb  0.3072 0.0306 10.0294  0.0000    0.4372
+  original    equity->oi->upb     NaN    NaN     NaN     NaN    0.0521
+  original inclusion->oi->upb     NaN    NaN     NaN     NaN    0.0577
+ drop_Y8_4         equity->oi  0.2598 0.0303  8.5648  0.0000    0.3099
+ drop_Y8_4      inclusion->oi  0.2614 0.0317  8.2448  0.0000    0.3018
+ drop_Y8_4            oi->upb  0.2149 0.0429  5.0094  0.0000    0.1702
+ drop_Y8_4            oi->ocb  0.2383 0.0277  8.6093  0.0000    0.2931
+ drop_Y8_4        equity->upb  0.3275 0.0509  6.4315  0.0000    0.3094
+ drop_Y8_4     inclusion->upb -0.1190 0.0464 -2.5632  0.0104   -0.1089
+ drop_Y8_4        equity->ocb -0.1586 0.0316 -5.0192  0.0000   -0.2327
+ drop_Y8_4     inclusion->ocb  0.3076 0.0305 10.0936  0.0000    0.4369
+ drop_Y8_4    equity->oi->upb     NaN    NaN     NaN     NaN    0.0528
+ drop_Y8_4 inclusion->oi->upb     NaN    NaN     NaN     NaN    0.0514
+drop_Y11_1         equity->oi  0.2466 0.0311  7.9386  0.0000    0.2856
+drop_Y11_1      inclusion->oi  0.2741 0.0321  8.5450  0.0000    0.3164
+drop_Y11_1            oi->upb  0.2308 0.0426  5.4171  0.0000    0.1831
+drop_Y11_1            oi->ocb  0.2334 0.0273  8.5482  0.0000    0.2878
+drop_Y11_1        equity->upb  0.2993 0.0517  5.7848  0.0000    0.2749
+drop_Y11_1     inclusion->upb -0.1032 0.0468 -2.2036  0.0276   -0.0945
+drop_Y11_1        equity->ocb -0.1532 0.0320 -4.7814  0.0000   -0.2187
+drop_Y11_1     inclusion->ocb  0.3080 0.0307 10.0466  0.0000    0.4383
+drop_Y11_1    equity->oi->upb     NaN    NaN     NaN     NaN    0.0523
+drop_Y11_1 inclusion->oi->upb     NaN    NaN     NaN     NaN    0.0579
+
+Item-deletion AVE/CR:
+    variant construct  n_items    AVE     CR  min_loading  max_loading
+  original    equity        5 0.6472 0.9015       0.7574       0.8384
+  original        el        5 0.7210 0.9281       0.8212       0.8709
+ drop_Y8_4    equity        4 0.6375 0.8753       0.7453       0.8339
+ drop_Y8_4        el        5 0.7211 0.9281       0.8213       0.8708
+drop_Y11_1    equity        5 0.6474 0.9016       0.7577       0.8388
+drop_Y11_1        el        4 0.7338 0.9168       0.8259       0.8719
+
+Latent H3 path-difference bootstrap:
+                   effect  estimate  percentile_ci_low  percentile_ci_high  zero_in_ci  n_boot_requested  n_boot_valid     seed
+                 OI->OCB    0.2867             0.2188              0.3553       False              1000          1000 20261020
+                 OI->UPB    0.1822             0.1113              0.2533       False              1000          1000 20261020
+difference_OCB_minus_UPB    0.1045             0.0067              0.2047       False              1000          1000 20261020
+
+Item-deletion PI moderation:
+    variant  n_product_indicators  interaction_b  interaction_se  interaction_p_wald  interaction_beta_std  oi_upb_beta_std  oi_slope_low_EL  oi_slope_high_EL  equity_cond_indirect_low  equity_cond_indirect_high  inclusion_cond_indirect_low  inclusion_cond_indirect_high    CFI    TLI  RMSEA
+  original                     5        -0.0958          0.0287              0.0008               -0.0872           0.1706           0.2578            0.0835                    0.0728                     0.0236                       0.0827                        0.0268 0.9403 0.9343 0.0423
+ drop_Y8_4                     5        -0.0995          0.0287              0.0005               -0.0904           0.1579           0.2483            0.0674                    0.0758                     0.0206                       0.0761                        0.0207 0.9404 0.9341 0.0422
+drop_Y11_1                     4        -0.0828          0.0267              0.0019               -0.0856           0.1713           0.2569            0.0856                    0.0721                     0.0240                       0.0826                        0.0275 0.9385 0.9318 0.0434
+
+Item-deletion composite moderation:
+    variant  interaction_beta  ci_low_HC3  ci_high_HC3  p_HC3  r_squared  equity_el_composite_r
+  original           -0.0653     -0.1091      -0.0216 0.0034     0.1008                 0.6681
+ drop_Y8_4           -0.0663     -0.1100      -0.0226 0.0029     0.1034                 0.6458
+drop_Y11_1           -0.0661     -0.1101      -0.0221 0.0033     0.1006                 0.6537
+
+Outputs written to: C:\Users\KMI\Desktop\gayoung\paradox\reports\roppa_critical_revision\tables
