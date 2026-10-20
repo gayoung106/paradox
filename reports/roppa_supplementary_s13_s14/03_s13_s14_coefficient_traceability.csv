@@ -1,0 +1,59 @@
+table_id,effect,specification,estimator,coefficient_type,estimate,standard_error,p_value,ci_lower,ci_upper,ci_method,n,source_code,source_output,verification_status
+S13,Equity -> OI,Original,Latent SEM,beta,.286,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Equity -> OI,Excluding Y8_4,Latent SEM,beta,.310,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Equity -> OI,Excluding Y11_1,Latent SEM,beta,.286,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OI,Original,Latent SEM,beta,.317,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OI,Excluding Y8_4,Latent SEM,beta,.302,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OI,Excluding Y11_1,Latent SEM,beta,.316,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Equity -> UPB,Original,Latent SEM,beta,.269,,<.001,.160,.380,BCa 95%,2020,code/26_sem04_h4_bootstrap_suppressor.py;code/28_sem06_bca_h4.py,results/sem/sem06_bca_h4_paths.csv,VERIFIED
+S13,Equity -> UPB,Excluding Y8_4,Latent SEM,beta,.309,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Equity -> UPB,Excluding Y11_1,Latent SEM,beta,.275,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OCBI,Original,Latent SEM,beta,.437,,<.001,.347,.530,BCa 95%,2020,code/26_sem04_h4_bootstrap_suppressor.py;code/28_sem06_bca_h4.py,results/sem/sem06_bca_h4_paths.csv,VERIFIED
+S13,Inclusion -> OCBI,Excluding Y8_4,Latent SEM,beta,.437,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OCBI,Excluding Y11_1,Latent SEM,beta,.438,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,OI -> UPB,Original,Latent SEM,beta,.182,,<.001,.108,.256,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_mediation_result.md,VERIFIED
+S13,OI -> UPB,Excluding Y8_4,Latent SEM,beta,.170,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,OI -> UPB,Excluding Y11_1,Latent SEM,beta,.183,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,OI x EL -> UPB,Original,Latent PI SEM,beta,-.087,,<.001,-.148,-.022,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S13,OI x EL -> UPB,Excluding Y8_4,Latent PI SEM,beta,-.090,,<.001,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_pi_moderation.csv,VERIFIED
+S13,OI x EL -> UPB,Excluding Y11_1,Latent PI SEM,beta,-.086,,.002,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_pi_moderation.csv,VERIFIED
+S13,Equity -> OI -> UPB,Original,Latent SEM product,beta,.052,,, .030,.082,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_part_bc_stage_c_mediation.csv,VERIFIED
+S13,Equity -> OI -> UPB,Excluding Y8_4,Latent SEM product,beta,.053,,,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Equity -> OI -> UPB,Excluding Y11_1,Latent SEM product,beta,.052,,,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OI -> UPB,Original,Latent SEM product,beta,.058,,,.033,.089,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_part_bc_stage_c_mediation.csv,VERIFIED
+S13,Inclusion -> OI -> UPB,Excluding Y8_4,Latent SEM product,beta,.051,,,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S13,Inclusion -> OI -> UPB,Excluding Y11_1,Latent SEM product,beta,.058,,,,,,2020,code/41_roppa_critical_revision.py,reports/roppa_critical_revision/tables/item_deletion_sem_paths.csv,VERIFIED
+S14,Equity -> OI,Separate mediation,OLS HC3,B,.393,.017,<.001,.359,.427,HC3 normal theory 95%,2020,code/06_mediation.py,results/mediation/mediation_result.md,VERIFIED
+S14,Equity -> OI,Simultaneous latent structural model,SEM MLW,beta,.286,,<.001,.203,.366,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_mediation_result.md,VERIFIED
+S14,Inclusion -> OI,Separate mediation,OLS HC3,B,.429,.019,<.001,.391,.467,HC3 normal theory 95%,2020,code/06_mediation.py,results/mediation/mediation_result.md,VERIFIED
+S14,Inclusion -> OI,Simultaneous latent structural model,SEM MLW,beta,.317,,<.001,.232,.392,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_mediation_result.md,VERIFIED
+S14,OI -> OCBI,Simultaneous observed-score path model,OLS path model,beta,.245,,,.193,.299,Bootstrap 95%,2020,code/20_oi_duality_parallel_mediation.py,results/oi_duality_parallel_mediation/duality_test.csv,VERIFIED
+S14,OI -> OCBI,Simultaneous latent structural model,SEM MLW,beta,.287,,<.001,.215,.356,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_mediation_result.md,VERIFIED
+S14,OI -> UPB,Simultaneous observed-score path model,OLS path model,beta,.144,,,.090,.199,Bootstrap 95%,2020,code/20_oi_duality_parallel_mediation.py,results/oi_duality_parallel_mediation/duality_test.csv,VERIFIED
+S14,OI -> UPB,Simultaneous latent structural model,SEM MLW,beta,.182,,<.001,.108,.256,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_mediation_result.md,VERIFIED
+S14,Equity -> UPB,Simultaneous observed-score direct model,OLS HC3,B,.195,.030,<.001,,,,2020,code/22_table5_dei_oi_direct_effects.py,results/tables/table5_dei_oi_direct_effects.csv,VERIFIED
+S14,Equity -> UPB,Simultaneous latent structural model,SEM MLW,beta,.269,,<.001,.160,.380,BCa 95%,2020,code/28_sem06_bca_h4.py,results/sem/sem06_bca_h4_paths.csv,VERIFIED
+S14,Inclusion -> OCBI,Simultaneous observed-score direct model,OLS HC3,B,.281,.027,<.001,,,,2020,code/22_table5_dei_oi_direct_effects.py,results/tables/table5_dei_oi_direct_effects.csv,VERIFIED
+S14,Inclusion -> OCBI,Simultaneous latent structural model,SEM MLW,beta,.437,,<.001,.347,.530,BCa 95%,2020,code/28_sem06_bca_h4.py,results/sem/sem06_bca_h4_paths.csv,VERIFIED
+S14,Equity -> OCBI,Simultaneous observed-score direct model,OLS HC3,B,-.042,.022,.052,,,,2020,code/11_regression_ocb.py;code/22_table5_dei_oi_direct_effects.py,results/ocb_regression/ocb_regression_result.md;results/tables/table5_dei_oi_direct_effects.csv,VERIFIED
+S14,Equity -> OCBI,Simultaneous latent structural model,SEM MLW,beta,-.226,,<.001,-.327,-.121,BCa 95%,2020,code/28_sem06_bca_h4.py,results/sem/sem06_bca_h4_paths.csv,VERIFIED
+S14,Inclusion -> UPB,Simultaneous observed-score direct model,OLS HC3,B,-.033,.032,.307,,,,2020,code/05_regression_upb.py;code/22_table5_dei_oi_direct_effects.py,results/regression/regression_upb.md;results/tables/table5_dei_oi_direct_effects.csv,VERIFIED
+S14,Inclusion -> UPB,Simultaneous latent structural model,SEM MLW,beta,-.101,,.017,-.190,.003,Wald p and BCa 95%,2020,code/28_sem06_bca_h4.py,results/sem/sem06_bca_h4_paths.csv;C:/Users/KMI/Downloads/0824_Online supplemental_Paradox Good Organizational Culture (1).docx,VERIFIED
+S14,Equity -> OI -> UPB,Simultaneous observed-score mediation,Bootstrap mediation,B,.034,,,.020,.051,Bootstrap 95%,2020,code/19_indirect_effect_comparison.py,results/indirect_effect_comparison/indirect_effect_comparison.csv,VERIFIED
+S14,Equity -> OI -> UPB,Simultaneous latent structural model,SEM MLW,beta,.052,,,.030,.082,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_part_bc_stage_c_mediation.csv,VERIFIED
+S14,Inclusion -> OI -> UPB,Simultaneous observed-score mediation,Bootstrap mediation,B,.038,,,.023,.056,Bootstrap 95%,2020,code/19_indirect_effect_comparison.py,results/indirect_effect_comparison/indirect_effect_comparison.csv,VERIFIED
+S14,Inclusion -> OI -> UPB,Simultaneous latent structural model,SEM MLW,beta,.058,,,.033,.089,BCa 95%,2020,code/29_sem07_mediation.py,results/sem/sem07_part_bc_stage_c_mediation.csv,VERIFIED
+S14,OI x EL -> UPB,Observed-score moderation,OLS HC3,B,-.062,.025,.011,-.110,-.014,HC3 normal theory 95%,2020,code/07_moderation.py,results/moderation/moderation_result.md,VERIFIED
+S14,OI x EL -> UPB,Latent product-indicator moderation,SEM MLW,beta,-.087,,, -.148,-.022,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S14,OI -> UPB at low EL,Observed-score moderation,OLS HC3,B,.230,,,.158,.298,Reported 95% CI,2020,code/99_reanalysis_gender_age_controls.py,C:/Users/KMI/Downloads/manuscript_261020.docx;C:/Users/KMI/Downloads/0824_Online supplemental_Paradox Good Organizational Culture (1).docx,UNVERIFIED
+S14,OI -> UPB at low EL,Latent product-indicator moderation,SEM MLW,beta,.258,,,.161,.354,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S14,OI -> UPB at high EL,Observed-score moderation,OLS HC3,B,.111,,,.040,.182,Reported 95% CI,2020,code/99_reanalysis_gender_age_controls.py,C:/Users/KMI/Downloads/manuscript_261020.docx;C:/Users/KMI/Downloads/0824_Online supplemental_Paradox Good Organizational Culture (1).docx,UNVERIFIED
+S14,OI -> UPB at high EL,Latent product-indicator moderation,SEM MLW,beta,.084,,,-.012,.188,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S14,Equity -> OI -> UPB at low EL,Separate PROCESS Model 14 with direct effect,OLS bootstrap,B,.074,,,.046,.102,Bootstrap 95%,2020,code/equity_model14_with_direct.py,results/equity_model14_with_direct/model14_with_direct_conditional_indirect_effects.csv,VERIFIED
+S14,Equity -> OI -> UPB at low EL,Latent product-indicator moderation,SEM MLW,beta,.073,,,.042,.113,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S14,Equity -> OI -> UPB at high EL,Separate PROCESS Model 14 with direct effect,OLS bootstrap,B,.023,,,-.005,.050,Bootstrap 95%,2020,code/equity_model14_with_direct.py,results/equity_model14_with_direct/model14_with_direct_conditional_indirect_effects.csv,VERIFIED
+S14,Equity -> OI -> UPB at high EL,Latent product-indicator moderation,SEM MLW,beta,.024,,,-.003,.057,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S14,Inclusion -> OI -> UPB at low EL,Separate PROCESS Model 14 with direct effect,OLS bootstrap,B,.091,,,.059,.123,Bootstrap 95%,2020,code/equity_model14_with_direct.py,results/equity_model14_with_direct/model14_with_direct_conditional_indirect_effects.csv,VERIFIED
+S14,Inclusion -> OI -> UPB at low EL,Latent product-indicator moderation,SEM MLW,beta,.083,,,.049,.125,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
+S14,Inclusion -> OI -> UPB at high EL,Separate PROCESS Model 14 with direct effect,OLS bootstrap,B,.042,,,.012,.073,Bootstrap 95%,2020,code/equity_model14_with_direct.py,results/equity_model14_with_direct/model14_with_direct_conditional_indirect_effects.csv,VERIFIED
+S14,Inclusion -> OI -> UPB at high EL,Latent product-indicator moderation,SEM MLW,beta,.027,,,-.003,.063,BCa 95%,2020,code/31_sem09_h7_product_indicator.py,results/sem/sem09_h7_product_indicator_result.csv,VERIFIED
